@@ -31,6 +31,6 @@ int main(void)
 	func<Foo>();
 	func<Bar>();
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
