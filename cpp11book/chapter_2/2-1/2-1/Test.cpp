@@ -15,8 +15,7 @@ std::string type_name()
 #ifndef __GNUC__
 		nullptr,
 #else
-		abi::__cxa_demangle(typeid(TR).name()), nullptr,
-		nullptr, nullptr),
+		abi::__cxa_demangle(typeid(TR).name(), nullptr, nullptr, nullptr),
 #endif
 		 std::free);
 
@@ -55,6 +54,6 @@ int main(void)
 	Func(str);
 	Func(std::move(str));
 
-	system("pause");
+	//system("pause");
 	return 0;
 }

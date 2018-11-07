@@ -7,6 +7,5 @@ PROJECT(chapter01)
 #MESSAGE(STATUS "This is BINARY dir " ${PROJECT_BINARY_DIR})
 #MESSAGE(STATUS "This is SOURCE dir " ${PROJECT_SOURCE_DIR})
 
-add_subdirectory(1-1)
-add_subdirectory(1-2)
+add_subdirectory(2-1)
 
