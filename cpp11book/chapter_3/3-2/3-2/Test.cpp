@@ -27,6 +27,6 @@ int main(void)
 	std::cout << "C: " << std::is_same<int, C>::value << std::endl;
 	std::cout << "D: " << std::is_same<int, D>::value << std::endl;
 
-	system("pause");
+  //system("pause");
 	return 0;
 }

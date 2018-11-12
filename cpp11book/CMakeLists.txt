@@ -9,4 +9,6 @@ MESSAGE(STATUS "This is SOURCE dir " ${PROJECT_SOURCE_DIR})
 
 add_subdirectory(chapter_1)
 add_subdirectory(chapter_2)
+add_subdirectory(chapter_3)
+add_subdirectory(chapter_6)
 

@@ -33,6 +33,6 @@ int main(void)
 {
 	Test();
 
-	system("pause");
+  //system("pause");
 	return 0;
 }

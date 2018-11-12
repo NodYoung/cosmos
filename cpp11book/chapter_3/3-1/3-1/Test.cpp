@@ -25,6 +25,6 @@ int main(void)
 
 	std::cout << a << std::endl;
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
