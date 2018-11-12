@@ -26,6 +26,6 @@ int main(void)
 	t2.join();
 	t3.join();
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
