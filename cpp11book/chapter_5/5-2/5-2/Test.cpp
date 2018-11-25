@@ -35,6 +35,6 @@ int main(void)
 
 	complex.both(32, 23);
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
