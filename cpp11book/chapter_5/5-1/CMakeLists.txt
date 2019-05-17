@@ -1,6 +1,4 @@
-cmake_minimum_required (VERSION 3.1)
 PROJECT(5-1)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 
 FILE (GLOB HDRS "${CMAKE_CURRENT_SOURCE_DIR}/5-1/*.h")
 FILE (GLOB SRCS "${CMAKE_CURRENT_SOURCE_DIR}/5-1/*.cpp")

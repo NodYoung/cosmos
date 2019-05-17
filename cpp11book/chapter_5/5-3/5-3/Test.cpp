@@ -33,8 +33,7 @@ int main(void)
 {
 	Complex complex;
 
-	complex.both(32, 23);  //因为同一线程可以多次获取同一互斥量，不会发生死锁
+	complex.both(32, 23);  //
 
-	system("pause");
 	return 0;
 }

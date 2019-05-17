@@ -31,7 +31,7 @@ public:
 
 		while (IsFull())
 		{
-			std::cout << "缓冲区满了，需要等待..." << std::endl;
+			std::cout << "buffer is  full, wait..." << std::endl;
 			m_notFull.wait(m_mutex);
 		}
 
@@ -45,7 +45,7 @@ public:
 		
 		while (IsEmpty())
 		{
-			std::cout << "缓冲区空了，需要等待..." << std::endl;
+			std::cout << "buffer is  empty, wait..." << std::endl;
 			m_notEmpty.wait(m_mutex);
 		}
 
@@ -78,9 +78,9 @@ public:
 	}
 
 private:
-	std::list<T> m_queue;                  //缓冲区
-	std::mutex m_mutex;                    //互斥量和条件变量结合起来使用
-	std::condition_variable_any m_notEmpty;//不为空的条件变量
-	std::condition_variable_any m_notFull; //没有满的条件变量
-	int m_maxSize;                         //同步队列最大的size
+	std::list<T> m_queue;                  //buffer
+	std::mutex m_mutex;                    //use mutex and condition_variable together
+	std::condition_variable_any m_notEmpty;
+	std::condition_variable_any m_notFull;
+	int m_maxSize;                         // the max size of queue
 };
