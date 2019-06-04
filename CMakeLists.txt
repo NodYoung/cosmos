@@ -7,8 +7,12 @@ set(CMAKE_CXX_FLAGS "-std=c++11 -g -fPIC")
 MESSAGE(STATUS "This is BINARY dir " ${PROJECT_BINARY_DIR})
 MESSAGE(STATUS "This is SOURCE dir " ${PROJECT_SOURCE_DIR})
 
+find_package(Boost REQUIRED COMPONENTS system thread filesystem)
+include_directories(include ${Boost_INCLUDE_DIRS})
+
 add_subdirectory(cpp11book)
 
-set(SRCS Aspect_test.cpp)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-ADD_EXECUTABLE(Aspect ${SRCS})
+ADD_EXECUTABLE(Aspect Aspect_test.cpp)
+ADD_EXECUTABLE(Boost_Filesystem boost_filesystem.cpp)
+target_link_libraries(Boost_Filesystem ${Boost_LIBRARIES})
