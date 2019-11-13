@@ -12,7 +12,7 @@ int main() {
     boost::asio::io_service::work work(ios);
     boost::thread thd([&ios]{ios.run();});
 
-    Connector conn(ios, "127.0.0.1", 9900);
+    Connector conn(ios, "192.168.2.154", 9900);
     conn.Start();
 
     std::string str;

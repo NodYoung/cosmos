@@ -8,4 +8,5 @@ PROJECT(chapter01)
 #MESSAGE(STATUS "This is SOURCE dir " ${PROJECT_SOURCE_DIR})
 
 add_subdirectory(2-1)
+add_subdirectory(2-4)
 

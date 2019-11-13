@@ -30,15 +30,33 @@ void Print(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
 	std::cout << t1 << t2 << t3 << t4 << t5 << std::endl;
 }
 
+template <typename T>
+void APrint(T t) {
+    std::cout << t << std::endl;
+}
+
+template <typename T, typename... Args>
+void APrint(T t, Args... args) {
+    std::cout << t;
+    APrint(args...);
+};
+
 int main(void)
 {
+    std::cout << "c++11 before" << std::endl;
 	Print(1);
 	Print(1, 2);
 	Print(1, 2, 3);
 	Print(1, 2, 3, 4);
 	Print(1, 2, 3, 4, 5);
 
+    std::cout << "c++11 After" << std::endl;
+    APrint(1);
+    APrint(1, 2);
+    APrint(1, 2, 3);
+    APrint(1, 2, 3, 4);
+    APrint(1, 2, 3, 4, 5);
 
-	system("pause");
+
 	return 0;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include <tuple>
+#include <type_traits>
 //普通函数.
 //函数指针.
 //function/lambda.
@@ -28,18 +29,26 @@ public:
 		static_assert(I < arity, "index is out of range, index must less than sizeof Args");
 		using type = typename std::tuple_element<I, std::tuple<Args...>>::type;
 	};
-	
-	typedef std::tuple<std::remove_cv_t<std::remove_reference_t<Args>>...> tuple_type;
-	typedef std::tuple<std::remove_const_t<std::remove_reference_t<Args>>...> bare_tuple_type;
+
+	//using arg0_type = typename std::tuple_element<0, std::tuple<Args...>>::type;
+	//template<size_t N>
+	//using arg_type = typename std::tuple_element<N, std::tuple<Args...>>::type;
+
+	typedef std::tuple<typename std::remove_cv<typename std::remove_reference<Args>::type>::type ...> tuple_type;
+	typedef std::tuple<typename std::remove_const<typename std::remove_reference<Args>::type>::type ...> bare_tuple_type;
+	//typedef std::tuple<std::remove_cv_t<std::remove_reference_t<Args>>...> tuple_type;
+	//typedef std::tuple<std::remove_const_t<std::remove_reference_t<Args>>...> bare_tuple_type;
 };
 
 //函数指针.
 template<typename Ret, typename... Args>
-struct function_traits<Ret(*)(Args...)> : function_traits<Ret(Args...)>{};
+struct function_traits<Ret(*)(Args...)> : function_traits<Ret(Args...)>
+{};
 
 //std::function.
 template <typename Ret, typename... Args>
-struct function_traits<std::function<Ret(Args...)>> : function_traits<Ret(Args...)>{};
+struct function_traits<std::function<Ret(Args...)>> : function_traits<Ret(Args...)>
+{};
 
 //member function.
 #define FUNCTION_TRAITS(...)\
@@ -53,7 +62,8 @@ FUNCTION_TRAITS(const volatile)
 
 //函数对象.
 template<typename Callable>
-struct function_traits : function_traits<decltype(&Callable::operator())>{};
+struct function_traits : function_traits<decltype(&Callable::operator())>
+{};
 
 template <typename Function>
 typename function_traits<Function>::stl_function_type to_function(const Function& lambda)

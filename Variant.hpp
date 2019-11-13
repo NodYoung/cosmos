@@ -2,6 +2,7 @@
 
 #include <typeindex>
 #include <iostream>
+#include "function_traits.hpp"
 
 /** 获取最大的整数 */
 template <size_t arg, size_t... rest>
@@ -167,6 +168,26 @@ public:
 		return IndexOf<T, Types...>::value;
 	}
 
+	template<typename F>
+	void Visit(F&& f)
+	{
+		//using T = typename function_traits<F>::args<0>::type;
+		using T = typename function_traits<F>::arg0_type;
+		if (is<T>())
+			f(get<T>());
+	}
+
+	template<typename F, typename... Rest>
+	void Visit(F&& f, Rest&&... rest)
+	{
+		using T = typename function_traits<F>::arg0_type;
+		//using T = typename function_traits<F>::args<0>::type;
+		if (is<T>())
+			Visit(std::forward<F>(f));
+		else
+			Visit(std::forward<Rest>(rest)...);
+	}
+
 	bool operator==(const Variant& rhs) const
 	{
 		return type_index_ == rhs.type_index_;
@@ -180,7 +201,7 @@ public:
 private:
 	void destroy(const std::type_index& index, void *buf)
 	{
-        [](Types&&...){}((destroy0<Types>(index, buf), 0)...);
+//        [](Types&&...){}((destroy0<Types>(index, buf), 0)...);
 	}
 
 	template<typename T>
@@ -192,7 +213,7 @@ private:
 
 	void move(const std::type_index& old_t, void *old_v, void *new_v) 
 	{
-        [](Types&&...){}((move0<Types>(old_t, old_v, new_v), 0)...);
+//        [](Types&&...){}((move0<Types>(old_t, old_v, new_v), 0)...);
 	}
 
 	template<typename T>

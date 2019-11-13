@@ -37,6 +37,12 @@ T* Instance(T0 arg0, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 	return new T(arg0, arg1, arg2, arg3, arg4);
 }
 
+template <typename T, typename... Args>
+T* AInstance(Args... args) {
+	return new T(std::forward<Args>(args)...);
+    //return new T(args...);
+};
+
 struct A
 {
 	A(int){}
@@ -49,9 +55,13 @@ struct B
 
 int main(void)
 {
+	std::cout << "c++11 before" << std::endl;
 	A* pa = Instance<A>(1);
 	B* pb = Instance<B>(1, 2);
 
-	system("pause");
+	std::cout << "c++11 After" << std::endl;
+	A* apa = AInstance<A>(1);
+	B* apb = AInstance<B>(1, 2);
+
 	return 0;
 }

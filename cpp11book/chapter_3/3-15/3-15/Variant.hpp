@@ -34,7 +34,7 @@ struct function_traits<ReturnType(ClassType::*)(Args...) const>
 	typedef std::tuple<Args...> ArgTupleType;
 };
 
-//»ñÈ¡×î´óµÄÕûÊı
+//è·å–æœ€å¤§çš„æ•´æ•°
 template <size_t arg, size_t... rest>
 struct IntegerMax;
 
@@ -45,7 +45,7 @@ struct IntegerMax<arg> : std::integral_constant<size_t, arg>
 	//enum{value = arg};
 };
 
-//»ñÈ¡×î´óµÄalign
+//è·å–æœ€å¤§çš„align
 template <size_t arg1, size_t arg2, size_t... rest>
 struct IntegerMax<arg1, arg2, rest...> : std::integral_constant<size_t, arg1 >= arg2 ? IntegerMax<arg1, rest...>::value :
 	IntegerMax<arg2, rest...>::value >
@@ -66,7 +66,7 @@ struct MaxAlign : std::integral_constant<int,
 template<typename T>
 struct MaxAlign<T> : std::integral_constant<int, std::alignment_of<T>::value >{}; */
 
-//ÊÇ·ñ°üº¬Ä³¸öÀàĞÍ
+//æ˜¯å¦åŒ…å«æŸä¸ªç±»å‹
 template < typename T, typename... List >
 struct Contains : std::true_type {};
 
@@ -77,7 +77,7 @@ struct Contains<T, Head, Rest...>
 template < typename T >
 struct Contains<T> : std::false_type{};
 
-//»ñÈ¡µÚÒ»¸öTµÄË÷ÒıÎ»ÖÃ
+//è·å–ç¬¬ä¸€ä¸ªTçš„ç´¢å¼•ä½ç½®
 // Forward
 template<typename Type, typename... Types>
 struct GetLeftSize;
@@ -104,7 +104,7 @@ struct GetLeftSize<Type> : std::integral_constant<int, -1>
 template<typename T, typename... Types>
 struct Index : std::integral_constant<int, sizeof...(Types)-GetLeftSize<T, Types...>::value - 1>{};
 
-//¸ù¾İË÷Òı»ñÈ¡Ë÷ÒıÎ»ÖÃµÄÀàĞÍ
+//æ ¹æ®ç´¢å¼•è·å–ç´¢å¼•ä½ç½®çš„ç±»å‹
 // Forward declaration
 template<int index, typename... Types>
 struct IndexType;
@@ -171,7 +171,7 @@ class Variant
 	{
 		data_size = IntegerMax<sizeof(Types)...>::value,
 		//align_size = IntegerMax<alignof(Types)...>::value
-		align_size = MaxAlign<Types...>::value //ctp²ÅÓĞalignof, ÎªÁË¼æÈİÓÃ´Ë°æ±¾
+		align_size = MaxAlign<Types...>::value //ctpï¿½ï¿½ï¿½ï¿½alignof, Îªï¿½Ë¼ï¿½ï¿½ï¿½ï¿½Ã´Ë°æ±¾
 	};
 	using data_t = typename std::aligned_storage<data_size, align_size>::type;
 
@@ -179,7 +179,7 @@ public:
 	template<int index>
 	using IndexType = typename IndexType<index, Types...>::DataType;
 
-	Variant(void) :m_typeIndex(typeid(void)), m_index(-1)
+	Variant(void) :m_typeIndex(typeid(void)), m_data(-1)
 	{
 	}
 
@@ -288,7 +288,7 @@ public:
 
 private:
 	data_t m_data;
-	std::type_index m_typeIndex;  //ÀàĞÍID
+	std::type_index m_typeIndex;  //ç±»å‹ID
 };
 
 #endif  //_VARIANT_HPP_
