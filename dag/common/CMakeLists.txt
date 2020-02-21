@@ -1,0 +1,20 @@
+project(dag_common)
+
+file (GLOB _INCS "*.h")
+file (GLOB _SRCS "*.cpp")
+file (GLOB _CONFIGS_INCS "configs/*.h")
+file (GLOB _CONFIGS_SRCS "configs/*.cpp")
+list (APPEND _INCS ${_CONFIGS_INCS})
+list (APPEND _SRCS ${_CONFIGS_SRCS})
+file (GLOB _STATUS_INCS "status/*.h")
+file (GLOB _STATUS_SRCS "status/*.cpp")
+list (APPEND _INCS ${_STATUS_INCS})
+list (APPEND _SRCS ${_STATUS_SRCS})
+file (GLOB _UTIL_INCS "util/*.h")
+file (GLOB _UTIL_SRCS "util/*.cpp")
+list (APPEND _INCS ${_UTIL_INCS})
+list (APPEND _SRCS ${_UTIL_SRCS})
+
+add_library(${PROJECT_NAME} STATIC ${_SRCS} ${_INCS})
+target_link_libraries(${PROJECT_NAME} ${DAG_LINKER_LIBS})
+

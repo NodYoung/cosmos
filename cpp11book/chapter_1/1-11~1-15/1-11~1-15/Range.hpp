@@ -1,6 +1,9 @@
 #ifndef _RANGE_HPP_
 #define _RANGE_HPP_
 
+#include <iostream>
+#include <stdexcept>
+
 namespace detail_range
 {
 	template<typename value_t>
@@ -53,7 +56,7 @@ namespace detail_range
 		public:
 			Iterator(int start, RangeImpl& range) : m_current_step(start), m_range(range)
 			{
-				m_current_value = m_range.m_begin + m_current_step*m_range.m_step;
+				m_current_value = m_range.m_begin + m_current_step * m_range.m_step;
 			}
 
 			value_t operator*() { return m_current_value; }

@@ -22,35 +22,35 @@ void TestRange()
 	cout << endl;
 
 	cout << "Range(10.5, 15.5):";
-	for (auto i : Range(10.5, 15.5))  //[10.5,15.5),²½³¤Îª1
+	for (auto i : Range(10.5, 15.5))  //[10.5,15.5),ï¿½ï¿½ï¿½ï¿½Îª1
 	{
 		cout << " " << i;
 	}
 	cout << endl;
 
 	cout << "Range(35,27,-1):";
-	for (int i : Range(35, 27, -1))  //(27, 35]£¬²½³¤Îª-1
+	for (int i : Range(35, 27, -1))  //(27, 35]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª-1
 	{
 		cout << " " << i;
 	}
 	cout << endl;
 
 	cout << "Range(2,8,0.5):";
-	for (auto i : Range(2, 8, 0.5))  //[2,8),²½³¤Îª0.5
+	for (auto i : Range(2, 8, 0.5))  //[2,8),ï¿½ï¿½ï¿½ï¿½Îª0.5
 	{
 		cout << " " << i;
 	}
 	cout << endl;
 
 	cout << "Range(8,7,-0.1):";
-	for (auto i : Range(8, 7, -0.1))  //(7,8]£¬²½³¤Îª-0.1
+	for (auto i : Range(8, 7, -0.1))  //(7,8]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª-0.1
 	{
 		cout << " " << i;
 	}
 	cout << endl;
 
 	cout << "Range('a', 'z'):";
-	for (auto i : Range('a', 'z'))  //['a','z'),²½³¤Îª1
+	for (auto i : Range('a', 'z'))  //['a','z'),ï¿½ï¿½ï¿½ï¿½Îª1
 	{
 		cout << " " << i;
 	}
@@ -62,6 +62,5 @@ int main(void)
 {
 	TestRange();
 
-	system("pause");
 	return 0;
 }

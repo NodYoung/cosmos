@@ -12,6 +12,7 @@ include_directories(include ${Boost_INCLUDE_DIRS})
 
 add_subdirectory(cpp11book)
 add_subdirectory(TaskCppV1.1)
+add_subdirectory(dag)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 ADD_EXECUTABLE(Aspect Aspect_test.cpp)
