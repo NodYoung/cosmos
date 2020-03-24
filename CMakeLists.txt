@@ -27,3 +27,5 @@ ADD_EXECUTABLE(any AnyTest.cpp Any.hpp)
 ADD_EXECUTABLE(variant VariantTest.cpp Variant.hpp)
 
 ADD_EXECUTABLE(MessageBus MessageBusTest.cpp)
+
+ADD_EXECUTABLE(catch_signal catch_signal.cpp)
