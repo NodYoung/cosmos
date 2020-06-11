@@ -31,3 +31,4 @@ ADD_EXECUTABLE(MessageBus MessageBusTest.cpp)
 ADD_EXECUTABLE(catch_signal catch_signal.cpp)
 
 ADD_EXECUTABLE(Ioc Ioc_test.cpp)
+ADD_EXECUTABLE(test_dynamic_cast test_dynamic_cast.cpp)
