@@ -15,8 +15,8 @@ int main(int argc, char** argv) {
   globalObjectFactory.loadLibrarys();
   auto pObject = globalObjectFactory.createObject("OpenCVCameraFactory, Ver 1.0", "OpenCVCamera");
 
-  auto pRobot = std::dynamic_pointer_cast<AbstractCamera>(pObject);
-  if (pRobot) {
+  auto pCamera = std::dynamic_pointer_cast<AbstractCamera>(pObject);
+  if (pCamera) {
     if (pObject->setup("CONFIG/UrRobotConfig/ur_sim_config.json")) {
       LOG(INFO) << "hello";
 //      pRobot->setTargetJointFilter(std::dynamic_pointer_cast<cobotsys::ArmRobotJointTargetFilter>(pFilter));
