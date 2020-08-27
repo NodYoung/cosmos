@@ -48,18 +48,18 @@ public:
             oss << "}";
 
             if (fileInfo.fileName().isEmpty()) {
-                LOG(INFO) << "Extend"
+                LOG(INFO) << "[Extend]"
                         << std::setw(32) << "ROS Extend" << ": "
                         << shrFactory->getFactoryType()
                         << ", " << oss.str();
             } else {
-                LOG(INFO) << "Plugin"
+                LOG(INFO) << "[Plugin]"
                         << std::setw(32) << fileInfo.fileName() << ": "
                         << shrFactory->getFactoryType()
                         << ", " << oss.str();
             }
         } else {
-            LOG(INFO) << "Plugin"
+            LOG(INFO) << "[Plugin]"
                     << std::setw(32) << fileInfo.fileName()
                     << ": "
                     << "Unable to get library Entry, "
@@ -96,7 +96,7 @@ public:
         if (iter != objectFactoryMap.end()) {
             auto result = iter->second->createObject(type);
             if (result) {
-                LOG(INFO) << "ObjFactory" << factory << ", " << type;
+                LOG(INFO) << "[ObjFactory]" << factory << ", " << type;
             }
             return result;
         }

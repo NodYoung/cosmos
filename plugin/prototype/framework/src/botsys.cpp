@@ -34,7 +34,7 @@ void parser_app_name(const char* arg) {
         internal_app_directory = internal_app_path.substr(0, slash_pos);
     }
 
-    LOG(INFO) << "App Info" << internal_app_directory << ", " << internal_app_name;
+    LOG(INFO) << "[App Info]" << internal_app_directory << ", " << internal_app_name;
 }
 }
 

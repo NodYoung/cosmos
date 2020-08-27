@@ -38,7 +38,7 @@ void FileFinder::loadDataPaths() {
     addSearchPath("../../data", Data);
 #endif
 
-    LOG(INFO) << "File Finder" << "Current Path: " << realPathOf(".");
+    LOG(INFO) << "[File Finder]" << "Current Path: " << realPathOf(".");
 }
 
 bool FileFinder::isFileExist(const std::string& filePath) {
@@ -119,18 +119,19 @@ std::string FileFinder::getPreDefPath(PreDefPath pathType) {
 }
 
 void FileFinder::dumpAvailablePath() {
-    for (auto& path : base_paths) {
-        LOG(INFO) << "File Finder" << "Path: " << path;
-        for (auto& iter : pre_def_path) {
-            if (iter.second == path) {
-                if (iter.first == PreDefPath::Data) LOG(INFO) << ", Data";
-                if (iter.first == PreDefPath::Plugin) LOG(INFO) << ", Plugin";
-                if (iter.first == PreDefPath::Config) LOG(INFO) << ", Config";
-                if (iter.first == PreDefPath::Bin) LOG(INFO) << ", Bin";
-                if (iter.first == PreDefPath::Script) LOG(INFO) << ", Script";
-            }
-        }
+  for (auto& path : base_paths) {
+    auto&& log_info = COMPACT_GOOGLE_LOG_INFO;
+    log_info.stream() << "[File Finder]" << "Path: " << path;
+    for (auto& iter : pre_def_path) {
+      if (iter.second == path) {
+        if (iter.first == PreDefPath::Data) log_info.stream() << ", Data";
+        if (iter.first == PreDefPath::Plugin) log_info.stream() << ", Plugin";
+        if (iter.first == PreDefPath::Config) log_info.stream() << ", Config";
+        if (iter.first == PreDefPath::Bin) log_info.stream() << ", Bin";
+        if (iter.first == PreDefPath::Script) log_info.stream() << ", Script";
+      }
     }
+  }
 }
 
 QString FileFinder::find(const QString& base_name) {
